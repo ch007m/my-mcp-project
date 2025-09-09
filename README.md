@@ -2,7 +2,7 @@
 
 ## Instructions
 
-Build and launch the Quarkus MCP server exposing 2 Weather API services: GetAlerts and GetLocation
+Build and launch the Quarkus MCP server exposing 2 Weather API services - https://api.weather.gov/: `GetAlerts` and `GetLocation`
 
 ```shell
 mvn clean install quarkus:dev

@@ -1,12 +1,8 @@
 package dev.snowdrop.weather.tools;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import dev.snowdrop.weather.model.Properties;
 import dev.snowdrop.weather.service.WeatherApiRestClient;
 import dev.snowdrop.weather.model.Alerts;
 import dev.snowdrop.weather.model.Forecast;
