@@ -1,4 +1,4 @@
-package dev.snowdrop;
+package dev.snowdrop.mcp;
 
 import dev.langchain4j.agent.tool.ToolExecutionRequest;
 import dev.langchain4j.mcp.client.DefaultMcpClient;

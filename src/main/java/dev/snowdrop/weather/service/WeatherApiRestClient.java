@@ -1,4 +1,4 @@
-package dev.snowdrop.service;
+package dev.snowdrop.weather.service;
 
 import dev.snowdrop.weather.model.Alerts;
 import dev.snowdrop.weather.model.Forecast;
@@ -11,7 +11,7 @@ import org.jboss.resteasy.reactive.RestPath;
 import java.util.Map;
 
 @RegisterRestClient(baseUri = "https://api.weather.gov")
-public interface WeatherClient {
+public interface WeatherApiRestClient {
     @GET
     @Path("/alerts/active/area/{state}")
     Alerts getAlerts(@RestPath String state);

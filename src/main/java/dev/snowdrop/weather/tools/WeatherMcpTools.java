@@ -1,8 +1,9 @@
-package dev.snowdrop.service;
+package dev.snowdrop.weather.tools;
 
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import dev.snowdrop.weather.service.WeatherApiRestClient;
 import dev.snowdrop.weather.model.Alerts;
 import dev.snowdrop.weather.model.Forecast;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -11,10 +12,10 @@ import io.quarkiverse.mcp.server.Tool;
 import io.quarkiverse.mcp.server.ToolArg;
 import io.quarkus.qute.Qute;
 
-public class WeatherTools {
+public class WeatherMcpTools {
 
     @RestClient
-    WeatherClient weatherClient;
+    WeatherApiRestClient weatherClient;
 
     @Tool(description = "Get weather alerts for a US state.")
     String getAlerts(@ToolArg(description = "Two-letter US state code (e.g. CA, NY)") String state) {
