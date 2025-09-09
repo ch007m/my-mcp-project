@@ -33,13 +33,6 @@ public class StreamableHttpClient {
         try {
             ToolExecutionRequest toolExecutionRequest;
 
-/*            logger.infof("Call the getAlerts tool ...");
-            toolExecutionRequest = ToolExecutionRequest.builder()
-                .name("getAlerts")
-                .arguments("{\"state\":\"CA\"}")
-                .build();
-            logger.info(mcpClient.executeTool(toolExecutionRequest));*/
-
             /*
              !!!! To avoid the following error returned by the API: "Adjusting Precision Of Point Coordinate" with an HTTP 301
              it is then needed to round the coordinate: latitude or longitude
@@ -62,6 +55,13 @@ public class StreamableHttpClient {
             toolExecutionRequest = ToolExecutionRequest.builder()
                 .name("getForecast")
                 .arguments(location)
+                .build();
+            logger.info(mcpClient.executeTool(toolExecutionRequest));
+
+            logger.infof("Call the getAlerts tool ...");
+            toolExecutionRequest = ToolExecutionRequest.builder()
+                .name("getAlerts")
+                .arguments("{\"state\":\"CA\"}")
                 .build();
             logger.info(mcpClient.executeTool(toolExecutionRequest));
 
