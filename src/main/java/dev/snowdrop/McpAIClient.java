@@ -1,23 +1,18 @@
 package dev.snowdrop;
 
-import com.google.cloud.vertexai.VertexAI;
 import dev.langchain4j.agent.tool.ToolExecutionRequest;
 import dev.langchain4j.mcp.McpToolProvider;
 import dev.langchain4j.mcp.client.DefaultMcpClient;
 import dev.langchain4j.mcp.client.McpClient;
-import dev.langchain4j.mcp.client.transport.McpTransport;
-import dev.langchain4j.mcp.client.transport.http.HttpMcpTransport;
 import dev.langchain4j.mcp.client.transport.http.StreamableHttpMcpTransport;
-import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.vertexai.VertexAiChatModel;
-import dev.langchain4j.model.vertexai.gemini.VertexAiGeminiChatModel;
 import dev.langchain4j.service.AiServices;
 import dev.langchain4j.service.tool.ToolProvider;
 
 import java.time.Duration;
 import java.util.List;
 
-public class McpLang4jClient {
+public class McpAIClient {
 
     private static String projectId = "itpc-gcp-cp-pe-eng-claude";
     private static String location = "us-east5";
@@ -37,14 +32,6 @@ public class McpLang4jClient {
             .toolExecutionTimeout(Duration.ofSeconds(4))
             .build();
         mcpClient.listTools().stream().forEach(System.out::println);
-
-        ToolExecutionRequest toolExecutionRequest = ToolExecutionRequest.builder()
-            .name("weather-forecast")
-            .arguments("{\"location\":\"Brussels\"}").build();
-        String result = mcpClient.executeTool(toolExecutionRequest);
-        System.out.println(result);
-
-/*
 
         ToolProvider toolProvider = McpToolProvider.builder()
             .mcpClients(List.of(mcpClient))
@@ -71,6 +58,6 @@ public class McpLang4jClient {
         ).forEach((String q) -> {
             System.out.println(q);
             System.out.println(meteo.request(q));
-        });*/
+        });
     }
 }
