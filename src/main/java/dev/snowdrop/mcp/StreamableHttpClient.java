@@ -28,7 +28,7 @@ public class StreamableHttpClient {
 
         McpClient mcpClient = new DefaultMcpClient.Builder()
             .transport(transport)
-            .toolExecutionTimeout(Duration.ofSeconds(4))
+            .toolExecutionTimeout(Duration.ofSeconds(1))
             .build();
 
         logger.infof("Listing the tools discovered from the MCP server ...");
@@ -80,7 +80,5 @@ public class StreamableHttpClient {
         } finally {
             mcpClient.close();
         }
-
-
     }
 }
