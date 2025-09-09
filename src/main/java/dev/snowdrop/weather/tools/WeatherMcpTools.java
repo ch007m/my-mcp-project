@@ -35,9 +35,9 @@ public class WeatherMcpTools {
 
         // Get the forecast from the forecast office using its office ID (OKD, etc) and x,y coordinates
         var forecastOffice = Qute.fmt("{p.properties.gridId}", Map.of("p", points));
-        var gridX = Qute.fmt("{p.properties.gridX}", Map.of("p", points));
-        var gridY = Qute.fmt("{p.properties.gridY}", Map.of("p", points));
-        return formatForecast(weatherClient.getForecast(forecastOffice, Integer.getInteger(gridX), Integer.getInteger(gridY)));
+        Integer gridX = Integer.valueOf(Qute.fmt("{p.properties.gridX}", Map.of("p", points)));
+        Integer gridY = Integer.valueOf(Qute.fmt("{p.properties.gridY}", Map.of("p", points)));
+        return formatForecast(weatherClient.getForecast(forecastOffice, gridX, gridY));
     }
 
     public static double roundingCoordinate(double coordinate) {

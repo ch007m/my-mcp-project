@@ -21,5 +21,5 @@ public interface WeatherApiRestClient {
 
     @GET
     @Path("/gridpoints/{forecastOffice}/{gridX},{gridY}/forecast")
-    Forecast getForecast(@RestPath String forecastOffice, @RestPath Integer gridX, @RestPath Integer gridY);
+    Forecast getForecast(@RestPath String forecastOffice, @RestPath int gridX, @RestPath int gridY);
 }
