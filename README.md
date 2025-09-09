@@ -10,5 +10,5 @@ mvn clean install quarkus:dev
 
 In a separate terminal, launch the client
 ```shell
-mvn exec:java -Dexec.mainClass="dev.snowdrop.mcp.McpClient"
+mvn exec:java -Dexec.mainClass="dev.snowdrop.mcp.StreamableHttpClient"
 ```

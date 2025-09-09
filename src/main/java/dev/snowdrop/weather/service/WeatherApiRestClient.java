@@ -2,7 +2,6 @@ package dev.snowdrop.weather.service;
 
 import dev.snowdrop.weather.model.Alerts;
 import dev.snowdrop.weather.model.Forecast;
-import io.quarkus.rest.client.reactive.Url;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
@@ -21,6 +20,6 @@ public interface WeatherApiRestClient {
     Map<String, Object> getPoints(@RestPath double latitude, @RestPath double longitude);
 
     @GET
-    @Path("/")
-    Forecast getForecast(@Url String url);
+    @Path("/gridpoints/{forecastOffice}/{gridX},{gridY}/forecast")
+    Forecast getForecast(@RestPath String forecastOffice, @RestPath Integer gridX, @RestPath Integer gridY);
 }

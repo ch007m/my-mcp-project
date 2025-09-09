@@ -12,7 +12,7 @@ import dev.snowdrop.weather.service.WeatherAssistant;
 import java.time.Duration;
 import java.util.List;
 
-public class McpAIClient {
+public class McpRegisteredAIClient {
 
     private static String projectId = "itpc-gcp-cp-pe-eng-claude";
     private static String location = "us-east5";
