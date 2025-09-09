@@ -1,6 +1,5 @@
 package dev.snowdrop;
 
-import dev.langchain4j.agent.tool.ToolExecutionRequest;
 import dev.langchain4j.mcp.McpToolProvider;
 import dev.langchain4j.mcp.client.DefaultMcpClient;
 import dev.langchain4j.mcp.client.McpClient;
@@ -8,6 +7,7 @@ import dev.langchain4j.mcp.client.transport.http.StreamableHttpMcpTransport;
 import dev.langchain4j.model.vertexai.VertexAiChatModel;
 import dev.langchain4j.service.AiServices;
 import dev.langchain4j.service.tool.ToolProvider;
+import dev.snowdrop.service.WeatherAssistant;
 
 import java.time.Duration;
 import java.util.List;
