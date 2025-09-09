@@ -4,11 +4,13 @@ import dev.langchain4j.agent.tool.ToolExecutionRequest;
 import dev.langchain4j.mcp.client.DefaultMcpClient;
 import dev.langchain4j.mcp.client.McpClient;
 import dev.langchain4j.mcp.client.transport.http.StreamableHttpMcpTransport;
+import io.quarkus.qute.Qute;
 import org.jboss.logging.Logger;
 import org.wildfly.common.Assert;
 
 import java.text.DecimalFormat;
 import java.time.Duration;
+import java.util.Map;
 
 import static dev.snowdrop.weather.tools.WeatherMcpTools.roundingCoordinate;
 
@@ -49,22 +51,24 @@ public class StreamableHttpClient {
             DecimalFormat df = new DecimalFormat("#.####");
             String tmplLocation = """
                 {
-                  "latitude": %s,
-                  "longitude": %s
+                  "latitude": {latitude},
+                  "longitude": {longitude}
                 }
                 """;
 
-            String location = String.format(tmplLocation, df.format(latitude), df.format(longitude));
-            logger.info(location);
+            String location = Qute.fmt(tmplLocation, Map.of("latitude",df.format(latitude),"longitude", df.format(longitude)));
+            logger.debugf("Coordinates: %s", location);
 
-            logger.infof("Call the getForecast tool ...");
+            logger.infof("\n=================================================\n Calling the getForecast tool ... \n=================================================");
             toolExecutionRequest = ToolExecutionRequest.builder()
                 .name("getForecast")
                 .arguments(location)
                 .build();
             logger.info(mcpClient.executeTool(toolExecutionRequest));
 
-            logger.infof("Call the getAlerts tool ...");
+            Thread.sleep(5000);
+
+            logger.infof("\n=================================================\n Calling the getAlerts tool ... \n=================================================");
             toolExecutionRequest = ToolExecutionRequest.builder()
                 .name("getAlerts")
                 .arguments("{\"state\":\"CA\"}")
