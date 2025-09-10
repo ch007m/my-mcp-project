@@ -33,7 +33,7 @@ public class WeatherMcpTools {
         var points = weatherClient.getPoints(latitude, longitude);
         //var url = Qute.fmt("{p.properties.forecast}", Map.of("p", points));
 
-        // Get the forecast from the forecast office using its office ID (OKD, etc) and x,y coordinates
+        // Get a forecast from the forecast office using its office ID (OKD, etc) and x,y coordinates
         var forecastOffice = Qute.fmt("{p.properties.gridId}", Map.of("p", points));
         Integer gridX = Integer.valueOf(Qute.fmt("{p.properties.gridX}", Map.of("p", points)));
         Integer gridY = Integer.valueOf(Qute.fmt("{p.properties.gridY}", Map.of("p", points)));
@@ -75,6 +75,4 @@ public class WeatherMcpTools {
                 Map.of("p", feature.properties()));
         }).collect(Collectors.joining("\n---\n"));
     }
-
-
 }
